@@ -11,7 +11,7 @@ export default function App() {
         setMessage(
           typeof event.data === "string"
             ? event.data
-            : JSON.stringify(event.data)
+            : JSON.parse(event.data.data)
         );
       }
     };
