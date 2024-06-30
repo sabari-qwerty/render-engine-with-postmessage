@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [data, setData] = useState();
   useEffect(() => {
     const sendMessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
 
       if (data.key === "gz-message") {
-        console.log(data.data);
+        setData(data.data);
       }
     };
 
@@ -15,5 +16,5 @@ export default function App() {
     return window.removeEventListener("message", sendMessage);
   }, []);
 
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return <pre>{JSON.stringify(data)}</pre>;
 }
