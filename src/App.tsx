@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 
 export default function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState();
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
 
       if (data.key === "gz-message") {
-        setMessage(
-          typeof event.data === "string"
-            ? event.data
-            : JSON.parse(event.data.data)
-        );
+        console.log(data.data);
+
+        setMessage(data.data);
       }
     };
 
