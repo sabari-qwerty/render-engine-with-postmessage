@@ -7,6 +7,8 @@ export default function App() {
     const handleMessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data);
 
+      console.log(data);
+
       if (data.key === "gz-message") {
         console.log(data.data);
 
